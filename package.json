@@ -1,0 +1,28 @@
+{
+  "name": "bg-club-bot",
+  "version": "1.0.0",
+  "description": "Telegram Board Game Club Bot",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/marcioos/bg-club-bot"
+  },
+  "keywords": [
+    "boardgamegeek",
+    "bgg",
+    "xmlapi",
+    "json",
+    "promise",
+    "axios"
+  ],
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/marcioos/bg-club-bot/issues"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
