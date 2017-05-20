@@ -19,6 +19,13 @@ axios@^0.15.3:
   dependencies:
     follow-redirects "1.0.0"
 
+bgg-axios@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bgg-axios/-/bgg-axios-1.1.0.tgz#0d79b3336674ec13c30d4870e7d5f616566f65c5"
+  dependencies:
+    axios "^0.15.3"
+    xml2json "^0.11.0"
+
 bindings@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"

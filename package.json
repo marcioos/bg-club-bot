@@ -13,16 +13,17 @@
   "keywords": [
     "boardgamegeek",
     "bgg",
-    "xmlapi",
-    "json",
-    "promise",
-    "axios"
+    "telegram",
+    "bot",
+    "tabletop",
+    "boardgame"
   ],
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/marcioos/bg-club-bot/issues"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "bgg-axios": "^1.1.0"
   }
 }
