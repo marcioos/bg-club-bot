@@ -4,7 +4,7 @@
   "description": "Telegram Board Game Club Bot",
   "main": "app/index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "start": "node app/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,8 @@
     "url": "https://github.com/marcioos/bg-club-bot/issues"
   },
   "dependencies": {
-    "bgg-axios": "^1.1.0",
+    "bgg-axios": "^2.0.1",
+    "axios": "^0.15.3",
     "express": "^4.15.3"
   }
 }
