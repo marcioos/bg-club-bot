@@ -1,12 +1,19 @@
 const express = require('express')
-const bgg = require('bgg-axios')
+const { fetchBggProposalData } = require('./bgg')
+const { getRulesVideoUrl } = require('./you-tube.js')
 const app = express()
 
 app.post('/propose/:bggId', (req, res) => {
-  bgg('thing', { id: req.params.bggId })
-    .then((bggRes) => {
+  let proposalData
+  fetchBggProposalData(req.params.bggId)
+    .then((bggData) => {
+      proposalData = Object.assign({}, bggData)
+      return getRulesVideoUrl(bggData.name)
+    })
+    .then((rulesVideoUrl) => {
+      proposalData.rulesVideoUrl = rulesVideoUrl
       res.setHeader('Content-Type', 'text/plain')
-      res.send(JSON.stringify(bggRes, null, '\t'))
+      res.send(JSON.stringify(proposalData, null, '\t'))
     })
     .catch((err) => {
       console.error(err)
