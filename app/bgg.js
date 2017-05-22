@@ -12,10 +12,10 @@ module.exports = {
         const maxPlayTime = game.maxplaytime.value
 
         return {
-          name: game.name.value,
+          gameName: game.name.value,
           numPlayers: minPlayers !== maxPlayers ? `${minPlayers}-${maxPlayers}` : maxPlayers,
           playTime: (minPlayTime !== maxPlayTime ? `${minPlayTime}-${maxPlayTime}` : playingTime) + ' min',
-          url: `https://boardgamegeek.com/boardgame/${bggId}`
+          bggUrl: `https://boardgamegeek.com/boardgame/${bggId}`
         }
       })
   }
