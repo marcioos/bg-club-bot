@@ -2,7 +2,7 @@ const axios = require('axios')
 
 const REQUEST_TIMEOUT_MS = 10000
 
-const axiosInstance = axios.create({
+const httpClient = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',
   timeout: REQUEST_TIMEOUT_MS,
 })
@@ -10,7 +10,11 @@ const axiosInstance = axios.create({
 module.exports = {
   getRulesVideoUrl: function (gameName) {
     const queryTerm = encodeURI(`${gameName} rules`)
-
-    return axiosInstance.get(`/search?q=${queryTerm}&part=snippet&maxResults=1`)
+    return httpClient
+      .get(`/search?q=${queryTerm}&part=snippet&maxResults=1&key=${process.env.GOOGLE_API_KEY}`)
+      .then((response) => {
+        const videoId = response.data.items[0].id.videoId
+        return `https://www.youtube.com/watch?v=${videoId}`
+      })
   }
 }

@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bgg-axios": "^2.0.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3"
   },
   "devDependencies": {
