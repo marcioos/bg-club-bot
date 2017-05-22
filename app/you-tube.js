@@ -12,7 +12,5 @@ module.exports = {
     const queryTerm = encodeURI(`${gameName} rules`)
 
     return axiosInstance.get(`/search?q=${queryTerm}&part=snippet&maxResults=1`)
-      .then((response) => response)
-      .catch((error) => console.log(error))
   }
 }
