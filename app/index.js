@@ -1,6 +1,7 @@
 const express = require('express')
 const { fetchBggProposalData } = require('./bgg')
 const { getRulesVideoUrl } = require('./you-tube.js')
+const telegram = require('./telegram.js')
 require('dotenv').config()
 
 const app = express()
@@ -20,4 +21,7 @@ app.post('/propose/:bggId', async (req, res) => {
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => console.log('bg-club-bot started on port ' + PORT))
+app.listen(PORT, async () => {
+  await telegram.setWebhook()
+  console.log('bg-club-bot started on port ' + PORT)
+})
