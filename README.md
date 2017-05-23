@@ -1,7 +1,8 @@
 ## Setup
 Create a `.env` file on the project root level. It should contain:
 ```
-GOOGLE_API_KEY=<API_TOKEN>
+GOOGLE_API_KEY=<API_KEY>
+TELEGRAM_BOT_TOKEN=<BOT_TOKEN>
 ```
 
 ## Running
