@@ -1,7 +1,7 @@
 const bggClient = require('bgg-axios')
 
 module.exports = {
-  fetchBggProposalData: function (bggId) {
+  fetchBggProposalData: (bggId) => {
     return bggClient.apiRequest('thing', { id: bggId })
       .then((bggResponse) => {
         const game = bggResponse.items.item
