@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 
 app.post('/' + process.env.TELEGRAM_BOT_TOKEN, (req, res) => {
   console.log('Request body', req.body)
+  console.log('entities', req.body.message.entities)
   res.send('OK')
 })
 
