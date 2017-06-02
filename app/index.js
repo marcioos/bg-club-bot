@@ -1,10 +1,18 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const { fetchBggProposalData } = require('./bgg')
 const { getRulesVideoUrl } = require('./you-tube.js')
 const telegram = require('./telegram.js')
 require('dotenv').config()
 
 const app = express()
+
+app.use(bodyParser.json())
+
+app.post('/' + process.env.TELEGRAM_BOT_TOKEN, (req, res) => {
+  console.log('Request body', req.body)
+  res.send('OK')
+})
 
 app.post('/propose/:bggId', async (req, res) => {
   try {
