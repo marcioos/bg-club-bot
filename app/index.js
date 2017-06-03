@@ -16,13 +16,14 @@ app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
     const commandRegexp = /^\/propose (.*)$/i
     if (message && commandRegexp.test(message.text)) {
       const match = message.text.match(commandRegexp)
-      const proposalData = await bot.proposeExact(match[1].trim())
+      const proposalText = await bot.proposeExact(match[1].trim())
 
       res.set('Content-Type', 'application/json')
       res.status(200).send(JSON.stringify({
         method: 'sendMessage',
         chat_id: message.chat.id,
-        text: proposalData
+        text: proposalText,
+        parse_mode: 'Markdown'
       }))
     } else {
       res.status(200).send('OK')
