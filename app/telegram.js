@@ -10,21 +10,33 @@ const httpClient = axios.create({
   }
 })
 
+function postToTelegram (endpoint, payload) {
+  return httpClient
+    .post(endpoint, payload)
+    .then((res) => {
+      if (res.data.ok && res.data.result) {
+        console.log(`Got 'ok' from Telegram endpoint: ${endpoint}`)
+      } else {
+        console.error(`Got bad response from Telegram endpoint ${endpoint}. Response data: ${JSON.stringify(res.data)}`)
+      }
+      console.trace(`Payload sent: ${JSON.stringify(payload)}`)
+    })
+    .catch((err) => {
+      console.error(`Failed while sending request to Telegram endpoint ${endpoint} with payload ${JSON.stringify(payload)}`)
+      console.error(err)
+    })
+}
+
 module.exports = {
-  setWebhook: () => {
-    return httpClient
-      .post(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
-        url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
-      })
-      .then((res) => {
-        if (res.data.ok && res.data.result) {
-          console.log('Telegram webhook successfully set')
-        } else {
-          console.error('Failed to set Telegram webhook')
-        }
-      })
-      .catch((err) => {
-        console.error('Failed to set Telegram webhook')
-      })
-  }
+  setWebhook: () => (
+    postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
+      url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
+    })
+  ),
+  sendMessage: (chatId, text) => (
+    postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      chat_id: chatId,
+      text
+    })
+  )
 }
