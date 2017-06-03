@@ -8,7 +8,15 @@ async function fetchProposalData (bggId) {
 }
 
 function toProposalText (data) {
-  return `*${data.gameName}*\n${data.numPlayers}\n${data.playTime}\n\n*BGG*\n${data.bggUrl}\n\n*Rules*\n${data.rulesVideoUrl}`
+  const text = [`*${data.gameName}*`]
+  if (data.numPlayers) {
+    text.push(`\n${data.numPlayers}`)
+  }
+  if (data.playTime) {
+    text.push(`\n${data.playTime}`)
+  }
+  text.push(`\n\n*BGG*\n${data.bggUrl}\n\n*Rules*\n${data.rulesVideoUrl}`)
+  return text.join("")
 }
 
 module.exports = {

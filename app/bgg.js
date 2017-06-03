@@ -15,7 +15,7 @@ function getNumPlayers (game) {
   if (minPlayers === '0' && maxPlayers === '0') {
     return null
   }
-  return minPlayers !== maxPlayers ? `${minPlayers}-${maxPlayers}` : maxPlayers
+  return (minPlayers !== maxPlayers ? `${minPlayers}-${maxPlayers}` : maxPlayers) + ' players'
 }
 
 function getPlayTime (game) {

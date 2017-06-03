@@ -9,7 +9,6 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
-  // WIP: duplicated code
   try {
     // TODO: ignore if update_id was already processed
     const message = req.body.message

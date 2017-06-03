@@ -32,11 +32,5 @@ module.exports = {
     postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
       url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
     })
-  ),
-  sendMessage: (chatId, text) => (
-    postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      chat_id: chatId,
-      text
-    })
   )
 }
