@@ -13,7 +13,7 @@ app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
   // TODO: ignore if update_id was already processed
   const message = req.body.message
   const commandRegexp = /^\/propose (.*)$/i
-  if (commandRegexp.test(message.text)) {
+  if (message && commandRegexp.test(message.text)) {
     const match = message.text.match(commandRegexp)
     const proposeArg = match[1].trim()
     const chatId = message.chat.id
