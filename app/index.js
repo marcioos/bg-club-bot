@@ -33,6 +33,8 @@ app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
   }
 })
 
+const PORT = process.env.PORT || 3000
+
 app.listen(PORT, async () => {
   await telegram.setWebhook()
   console.log('bg-club-bot started on port ' + PORT)
