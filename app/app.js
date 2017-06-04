@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const bot = require('./bot.js')
-const telegram = require('./telegram.js')
+const proposal = require('./proposal')
+const telegram = require('./service/telegram')
 require('dotenv').config()
 
 const app = express()
@@ -15,7 +15,7 @@ app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
     const commandRegexp = /^\/propose (.*)$/i
     if (message && commandRegexp.test(message.text)) {
       const match = message.text.match(commandRegexp)
-      const proposalText = await bot.proposeExact(match[1].trim())
+      const proposalText = await proposal.proposeExact(match[1].trim())
 
       res.set('Content-Type', 'application/json')
       res.status(200).send(JSON.stringify({

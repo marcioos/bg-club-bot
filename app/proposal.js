@@ -1,5 +1,5 @@
-const { fetchBggProposalData } = require('./bgg')
-const { getRulesVideoUrl } = require('./you-tube.js')
+const { fetchBggProposalData } = require('./service/bgg')
+const { getRulesVideoUrl } = require('./service/you-tube')
 
 async function fetchProposalData (bggId) {
   const bggData = await fetchBggProposalData(bggId)
