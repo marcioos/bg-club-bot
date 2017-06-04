@@ -9,7 +9,7 @@ const httpClient = axios.create({
 
 module.exports = {
   getRulesVideoUrl: (gameName) => {
-    const queryTerm = encodeURI(`${gameName} rules`)
+    const queryTerm = encodeURI(`how to play ${gameName} board game rules`)
     return httpClient
       .get(`/search?q=${queryTerm}&part=snippet&maxResults=1&key=${process.env.GOOGLE_API_KEY}`)
       .then((response) => {
