@@ -19,7 +19,6 @@ function postToTelegram (endpoint, payload) {
       } else {
         console.error(`Got bad response from Telegram endpoint ${endpoint}. Response data: ${JSON.stringify(res.data)}`)
       }
-      console.trace(`Payload sent: ${JSON.stringify(payload)}`)
     })
     .catch((err) => {
       console.error(`Failed while sending request to Telegram endpoint ${endpoint} with payload ${JSON.stringify(payload)}`)

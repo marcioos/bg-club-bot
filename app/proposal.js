@@ -3,8 +3,11 @@ const { getRulesVideoUrl } = require('./service/you-tube')
 
 async function fetchProposalData (bggId) {
   const bggData = await fetchBggProposalData(bggId)
-  const rulesVideoUrl = await getRulesVideoUrl(bggData.gameName)
-  return Object.assign(bggData, { rulesVideoUrl })
+  if (bggData) {
+    const rulesVideoUrl = await getRulesVideoUrl(bggData.gameName)
+    return Object.assign(bggData, { rulesVideoUrl })
+  }
+  return null
 }
 
 function toProposalText (data) {
@@ -15,7 +18,10 @@ function toProposalText (data) {
   if (data.playTime) {
     text.push(`\n${data.playTime}`)
   }
-  text.push(`\n\n*BGG*\n${data.bggUrl}\n\n*Rules*\n${data.rulesVideoUrl}`)
+  text.push(`\n\n*BGG*\n${data.bggUrl}`)
+  if (data.rulesVideoUrl) {
+    text.push(`\n\n*Rules*\n${data.rulesVideoUrl}`)
+  }
   return text.join("")
 }
 
