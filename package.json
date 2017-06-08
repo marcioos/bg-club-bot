@@ -27,8 +27,8 @@
     "node": "7.10.0"
   },
   "dependencies": {
-    "axios": "^0.15.3",
-    "bgg-axios": "^2.0.1",
+    "axios": "^0.16.2",
+    "bgg-axios": "^2.0.3",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.3"
