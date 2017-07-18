@@ -24,7 +24,7 @@
     "url": "https://github.com/marcioos/bg-club-bot/issues"
   },
   "engines": {
-    "node": "7.10.0"
+    "node": "7.10.1"
   },
   "dependencies": {
     "axios": "^0.16.2",

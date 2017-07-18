@@ -32,7 +32,7 @@ module.exports = {
   fetchBggProposalData: (bggId) => {
     return bggClient.apiRequest('thing', { id: bggId })
       .then((bggResponse) => {
-        if (!bggResponse.items) {
+        if (!bggResponse.items || !bggResponse.items.item) {
           return null
         }
         const game = bggResponse.items.item
