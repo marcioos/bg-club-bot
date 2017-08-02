@@ -22,7 +22,7 @@ function toProposalText (data) {
   if (data.rulesVideoUrl) {
     text.push(`\n\n*Rules*\n${data.rulesVideoUrl}`)
   }
-  return text.join("")
+  return text.join('')
 }
 
 module.exports = {

@@ -26,10 +26,10 @@ function postToTelegram (endpoint, payload) {
     })
 }
 
-module.exports = {
-  setWebhook: () => (
-    postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
-      url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
-    })
-  )
+function setWebhook () {
+  return postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
+    url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
+  })
 }
+
+module.exports = { setWebhook }

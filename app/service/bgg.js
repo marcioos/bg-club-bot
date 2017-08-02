@@ -28,20 +28,20 @@ function getPlayTime (game) {
   return (minPlayTime !== maxPlayTime ? `${minPlayTime}-${maxPlayTime}` : playingTime) + ' min'
 }
 
-module.exports = {
-  fetchBggProposalData: (bggId) => {
-    return bggClient.apiRequest('thing', { id: bggId })
-      .then((bggResponse) => {
-        if (!bggResponse.items || !bggResponse.items.item) {
-          return null
-        }
-        const game = bggResponse.items.item
-        return {
-          gameName: getGameName(game),
-          numPlayers: getNumPlayers(game),
-          playTime: getPlayTime(game),
-          bggUrl: `https://boardgamegeek.com/boardgame/${bggId}`
-        }
-      })
-  }
+function fetchBggProposalData (bggId) {
+  return bggClient.apiRequest('thing', { id: bggId })
+    .then((bggResponse) => {
+      if (!bggResponse.items || !bggResponse.items.item) {
+        return null
+      }
+      const game = bggResponse.items.item
+      return {
+        gameName: getGameName(game),
+        numPlayers: getNumPlayers(game),
+        playTime: getPlayTime(game),
+        bggUrl: `https://boardgamegeek.com/boardgame/${bggId}`
+      }
+    })
 }
+
+module.exports = { fetchBggProposalData }

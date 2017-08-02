@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const proposal = require('./proposal')
+const handleMessage = require('./handle-message')
 const telegram = require('./service/telegram')
 require('dotenv').config()
 
@@ -10,20 +10,10 @@ app.use(bodyParser.json())
 
 app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
   try {
-    // TODO: ignore if update_id was already processed
-    const message = req.body.message
-    const commandRegexp = /^\/propose (.*)$/i
-    if (message && commandRegexp.test(message.text)) {
-      const match = message.text.match(commandRegexp)
-      const proposalText = await proposal.proposeExact(match[1].trim())
-
+    const responseMessage = handleMessage(req.body.message)
+    if (responseMessage) {
       res.set('Content-Type', 'application/json')
-      res.status(200).send(JSON.stringify({
-        method: 'sendMessage',
-        chat_id: message.chat.id,
-        text: proposalText,
-        parse_mode: 'Markdown'
-      }))
+      res.status(200).send(JSON.stringify(responseMessage))
     } else {
       res.status(200).send('OK')
     }
