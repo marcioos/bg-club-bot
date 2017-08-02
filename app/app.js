@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
   try {
-    const responseMessage = handleMessage(req.body.message)
+    const responseMessage = await handleMessage(req.body.message)
     if (responseMessage) {
       res.set('Content-Type', 'application/json')
       res.status(200).send(JSON.stringify(responseMessage))
