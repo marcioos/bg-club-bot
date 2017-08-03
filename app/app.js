@@ -1,14 +1,16 @@
+require('dotenv').config()
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const handleMessage = require('./handle-message')
 const telegram = require('./service/telegram')
-require('dotenv').config()
+const config = require('./config')
 
 const app = express()
 
 app.use(bodyParser.json())
 
-app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
+app.post('/' + config.TELEGRAM_BOT_TOKEN, async (req, res) => {
   try {
     const responseMessage = await handleMessage(req.body.message)
     if (responseMessage) {
@@ -23,9 +25,7 @@ app.post('/' + process.env.TELEGRAM_BOT_TOKEN, async (req, res) => {
   }
 })
 
-const PORT = process.env.PORT || 3000
-
-app.listen(PORT, async () => {
+app.listen(config.PORT, async () => {
   await telegram.setWebhook()
-  console.log('bg-club-bot started on port ' + PORT)
+  console.log('bg-club-bot started on port ' + config.PORT)
 })

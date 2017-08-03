@@ -1,3 +1,4 @@
+const config = require('../config')
 const axios = require('axios')
 
 const REQUEST_TIMEOUT_MS = 10000
@@ -27,8 +28,8 @@ function postToTelegram (endpoint, payload) {
 }
 
 function setWebhook () {
-  return postToTelegram(`/bot${process.env.TELEGRAM_BOT_TOKEN}/setWebhook`, {
-    url: `https://bg-club-bot.herokuapp.com/${process.env.TELEGRAM_BOT_TOKEN}`
+  return postToTelegram(`/bot${config.TELEGRAM_BOT_TOKEN}/setWebhook`, {
+    url: `https://bg-club-bot.herokuapp.com/${config.TELEGRAM_BOT_TOKEN}`
   })
 }
 
