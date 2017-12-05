@@ -1,3 +1,7 @@
+## Propose by BGG ID
+
+![proposing by BGG ID](https://raw.githubusercontent.com/marcioos/bg-club-bot/master/screenshot.png)
+
 ## Setup
 Create a `.env` file on the project root level. It should contain:
 ```
